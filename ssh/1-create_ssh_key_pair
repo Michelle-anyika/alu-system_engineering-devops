@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Creates RSA key pair with passphrase protection
+
+# Generate the key pair
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/school -N "betty" -q <<<y >/dev/null 2>&1
+
+# Display the output messages similar to your example
+echo "Generating public/private rsa key pair."
+echo "Your identification has been saved in school."
+echo "Your public key has been saved in school.pub."
+echo "The key fingerprint is:"
+ssh-keygen -lf ~/.ssh/school | cut -d' ' -f2-
+echo "The key's randomart image is:"
+ssh-keygen -lvf ~/.ssh/school -E md5 | grep -A 16 "^+"
